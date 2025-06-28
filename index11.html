@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic List Example</title>
+  <style>
+    /* Styling for odd and even items */
+    .odd {
+      color: blue;
+      font-weight: bold;
+    }
+
+    .even {
+      color: red;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Dynamic List</h2>
+
+  <!-- Unordered List -->
+  <ul id="myList">
+    <li class="odd">Item 1</li>
+    <li class="even">Item 2</li>
+    <li class="odd">Item 3</li>
+  </ul>
+
+  <!-- Button -->
+  <button id="addBtn">Add Item</button>
+
+  <!-- JavaScript -->
+  <script>
+    const ul = document.querySelector("#myList");
+    const button = document.querySelector("#addBtn");
+
+    button.addEventListener("click", () => {
+      const newItem = document.createElement("li");
+
+      // Get the current number of list items
+      const currentLength = ul.children.length + 1;
+
+      // Set text
+      newItem.textContent = "New Item " + currentLength;
+
+      // Apply styling class based on sequence
+      if (currentLength % 2 === 1) {
+        newItem.classList.add("odd");
+      } else {
+        newItem.classList.add("even");
+      }
+
+      // Append the item
+      ul.appendChild(newItem);
+    });
+  </script>
+
+</body>
+</html>

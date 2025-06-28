@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive Div</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    #displayBox {
+      width: 100%;
+      max-width: 500px;
+      padding: 20px;
+      background-color: lightgray;
+      margin-top: 20px;
+      border-radius: 8px;
+      font-size: 18px;
+    }
+
+    input {
+      padding: 8px;
+      margin: 5px 0;
+      width: 200px;
+    }
+
+    button {
+      padding: 8px 16px;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Dynamic Div Editor</h2>
+
+  <!-- Input Fields -->
+  <label>Enter Background Color:</label><br>
+  <input type="text" id="colorInput" placeholder="e.g. red or #f0f0f0"><br><br>
+
+  <label>Enter Text:</label><br>
+  <input type="text" id="textInput" placeholder="New content for the box"><br><br>
+
+  <!-- Buttons -->
+  <button onclick="changeBackground()">Change Background</button>
+  <button onclick="updateText()">Update Text</button>
+
+  <!-- Div to be updated -->
+  <div id="displayBox">This is the initial text in the box.</div>
+
+  <!-- JavaScript -->
+  <script>
+    function changeBackground() {
+      const colorInput = document.getElementById("colorInput").value.trim();
+      const box = document.getElementById("displayBox");
+
+      // Create a temporary element to test color validity
+      const testElement = document.createElement("div");
+      testElement.style.color = colorInput;
+
+      if (testElement.style.color === "") {
+        alert("Invalid color name!");
+      } else {
+        box.style.backgroundColor = colorInput;
+      }
+    }
+
+    function updateText() {
+      const text = document.getElementById("textInput").value.trim();
+      const box = document.getElementById("displayBox");
+
+      if (text === "") {
+        alert("Please enter some text!");
+      } else {
+        box.textContent = text;
+      }
+    }
+  </script>
+
+</body>
+</html>
